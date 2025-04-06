@@ -26,8 +26,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
-        run: |
-          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS $ECR_REGISTRY
+        uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build and push FastAPI image
         run: |
